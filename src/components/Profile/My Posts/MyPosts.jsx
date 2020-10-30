@@ -2,13 +2,13 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 const MyPosts = (props) => {
-  let posts=[
-    {id:1,message:'hi.how are you?',likesCount:12},
-    {id:2,message:'its my first post hm',likesCount:14},
-    {id:3,message:'ahahah',likesCount:14}
+//   let posts=[
+//     {id:1,message:'hi.how are you?',likesCount:12},
+//     {id:2,message:'its my first post hm',likesCount:14},
+//     {id:3,message:'ahahah',likesCount:14}
     
-]
-let postsElements=posts.map(p=><Post message={p.message} likesCount={p.likesCount} />)
+// ]
+let postsElements=props.posts.map(p=><Post message={p.message} likesCount={p.likesCount} />)
 
 
   return (
