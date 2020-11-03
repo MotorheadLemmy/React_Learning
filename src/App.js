@@ -11,6 +11,7 @@ import Profile from './components/Profile/Profile';
 
 
 const App = (props) => {
+ 
   
   return (
    
@@ -22,9 +23,13 @@ const App = (props) => {
         <Route path='/profile' component={Profile} /> */}
 
           <Route path='/dialogs' render={()=> <Dialogs
-          //  dialogs={props.state.dialogsPage.dialogs}
-          //   messages={props.state.dialogsPage.messages} />} />
-          state={props.state.dialogsPage} />}  />
+         
+          // messages={props.state.dialogsPage.messages}
+          // dialogs={props.state.dialogsPage.dialogs} 
+          // dispatch={props.dispatch} 
+          // newMessageBody={props.state.dialogsPage.newMessageBody}
+          store={props.store}
+           />} />
         <Route path='/profile' render={()=><Profile 
         // posts={props.state.profilePage.posts} />} />
         profilePage={props.state.profilePage} 
