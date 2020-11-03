@@ -17,7 +17,18 @@ const ADD_POST = 'ADD-POST'
 //       }
 //     return state
 // }
-const profileReducer = (state, action) => {
+let initialState={
+    posts:[
+        {id:1,message:'hi.how are you?',likesCount:12},
+        {id:2,message:'its my first post hm',likesCount:14},
+        {id:3,message:'ahahah',likesCount:14}
+        
+      ],
+      newPostText:'awesome'
+ 
+
+  }
+const profileReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
