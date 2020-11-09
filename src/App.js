@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -22,7 +22,7 @@ const App = (props) => {
         {/* <Route path='/dialogs' component ={Dialogs} />
         <Route path='/profile' component={Profile} /> */}
 
-          <Route path='/dialogs' render={()=> <Dialogs
+          <Route path='/dialogs' render={()=> <DialogsContainer
          
           // messages={props.state.dialogsPage.messages}
           // dialogs={props.state.dialogsPage.dialogs} 
@@ -32,8 +32,9 @@ const App = (props) => {
            />} />
         <Route path='/profile' render={()=><Profile 
         // posts={props.state.profilePage.posts} />} />
-        profilePage={props.state.profilePage} 
-        dispatch={props.dispatch}/>}/>
+        // 
+
+        store={props.store}/>}/>
       </div>
     </div>
     
