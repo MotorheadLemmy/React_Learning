@@ -28,13 +28,14 @@ const App = (props) => {
           // dialogs={props.state.dialogsPage.dialogs} 
           // dispatch={props.dispatch} 
           // newMessageBody={props.state.dialogsPage.newMessageBody}
-          store={props.store}
+          // store={props.store}
            />} />
         <Route path='/profile' render={()=><Profile 
         // posts={props.state.profilePage.posts} />} />
         // 
 
-        store={props.store}/>}/>
+        // store={props.store}
+        />}/>
       </div>
     </div>
     
