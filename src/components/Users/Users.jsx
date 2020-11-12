@@ -1,24 +1,17 @@
+import * as axios from 'axios'
 import React from 'react'
 import styles from './Users.module.css'
+import userPhoto from '../../assets/images/user.jpg'
 
 let Users = (props) => {
     if (props.users.length===0){
-    props.setUsers([{
-        id: 1, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
-        followed: true, fullName: 'Joe', status: 'I am a boss', location: { city: 'Minsk', country: 'Belarus' }
-    },
-    {
-        id: 2, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
-        followed: false, fullName: 'Gary', status: 'What a nice day', location: { city: 'Zp', country: 'Ukraine' }
-    },
-    {
-        id: 3, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
-        followed: true, fullName: 'Lars', status: 'need help asap!', location: { city: 'Krasnodar', country: 'Russia' }
-    },
-    {
-        id: 4, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
-        followed: false, fullName: 'James', status: 'ahahah', location: { city: 'London', country: 'Uk' }
-    }])
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response=>{
+            
+            props.setUsers(response.data.items)
+
+        })
+
+
 }
     return (
     <div>
@@ -26,7 +19,7 @@ let Users = (props) => {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
-                        <img src={u.photoUrl} className={styles.userPhoto} />
+                        <img src={u.photos.small!=null ? u.photos.small : userPhoto} className={styles.userPhoto} />
                     </div>
                     <div>
                         {u.followed
@@ -37,12 +30,12 @@ let Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullname}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{'u.location.country'}</div>
+                        <div>{'u.location.city'}</div>
                     </span>
                 </span>
             </div>)
@@ -52,3 +45,22 @@ let Users = (props) => {
 
 
 export default Users
+
+// props.setUsers([{
+//     id: 1, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
+//     followed: true, fullName: 'Joe', status: 'I am a boss', location: { city: 'Minsk', country: 'Belarus' }
+// },
+// {
+//     id: 2, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
+//     followed: false, fullName: 'Gary', status: 'What a nice day', location: { city: 'Zp', country: 'Ukraine' }
+// },
+// {
+//     id: 3, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
+//     followed: true, fullName: 'Lars', status: 'need help asap!', location: { city: 'Krasnodar', country: 'Russia' }
+// },
+// {
+//     id: 4, photoUrl: 'https://static01.nyt.com/images/2010/05/28/arts/coleman1/coleman1-articleInline.jpg?quality=75&auto=webp&disable=upscale',
+//     followed: false, fullName: 'James', status: 'ahahah', location: { city: 'London', country: 'Uk' }
+// }])
+
+// })
