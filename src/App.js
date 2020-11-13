@@ -5,7 +5,7 @@ import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 
 
@@ -31,7 +31,7 @@ const App = (props) => {
           // newMessageBody={props.state.dialogsPage.newMessageBody}
           // store={props.store}
            />} />
-        <Route path='/profile' render={()=><Profile 
+        <Route path='/profile' render={()=><ProfileContainer 
         // posts={props.state.profilePage.posts} />} />
         // 
 
