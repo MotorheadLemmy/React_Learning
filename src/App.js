@@ -31,7 +31,7 @@ const App = (props) => {
           // newMessageBody={props.state.dialogsPage.newMessageBody}
           // store={props.store}
            />} />
-        <Route path='/profile' render={()=><ProfileContainer 
+        <Route path='/profile/:userId?' render={()=><ProfileContainer 
         // posts={props.state.profilePage.posts} />} />
         // 
 
