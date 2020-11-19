@@ -51,7 +51,7 @@ const Dialogs=(props)=>{
     //     <DialogItem  name={dialogs[1].name} id={dialogs[1].id}/>
     // ]
 
-    if(props.isAuth) return <Redirect to={'/login'} />
+    //if(props.isAuth) return <Redirect to={'/login'} />
 
     return(
         <div className={s.dialogs}>
