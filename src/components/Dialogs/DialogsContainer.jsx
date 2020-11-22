@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
+import { sendMessageCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 //import StoreContext from '../../StoreContext';
 import { connect } from 'react-redux';
@@ -46,12 +46,12 @@ let mapStateToProps=(state)=>{
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
-        sendMessage:()=>{
-            dispatch(sendMessageCreator())
+        sendMessage:(sendMessageBody)=>{
+            dispatch(sendMessageCreator(sendMessageBody))
         },
-        updateNewMessageBody:(body)=>{
-            dispatch(updateNewMessageBodyCreator(body))
-        }
+        // updateNewMessageBody:(body)=>{
+        //     dispatch(updateNewMessageBodyCreator(body))
+        // }
 
     }
 
