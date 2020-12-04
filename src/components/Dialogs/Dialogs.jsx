@@ -2,8 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
-import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { maxLengthCreator, required } from '../../utils/validators/validators';
 import { Textarea } from '../common/FormsControls/FormsControls';
