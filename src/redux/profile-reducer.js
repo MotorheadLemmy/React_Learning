@@ -5,23 +5,8 @@ const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE='SET_USER_PROFILE'
 const SET_STATUS='SET_STATUS'
 const DELETE_POST='DELETE_POST'
-// const profileReducer=(state,action)=>{
- 
-//     if(action.type===ADD_POST){
-//         let newPost={
-//           id:5,
-//           message:state.newPostText,
-//           likesCount:0
-//       }
-//       state.posts.push(newPost)
-//       state.newPostText=''
+const SAVE_PHOTO_SUCCESS='SAVE_PHOTO_SUCCESS'
 
-//       }else if(action.type===UPDATE_NEW_POST_TEXT){
-//         state.newPostText=action.newText
-
-//       }
-//     return state
-// }
 let initialState={
     posts:[
         {id:1,message:'hi.how are you?',likesCount:12},
@@ -32,41 +17,7 @@ let initialState={
       //newPostText:'awesome',
       profile:null,
       status:''
-
- 
-
   }
-
-// const profileReducer = (state=initialState, action) => {
-//   switch (action.type) {
-//       case ADD_POST:{
-//           let newPost = {
-//               id: 5,
-//               message: state.newPostText,
-//               likesCount: 0
-//           }
-//           let stateCopy={...state}
-//           stateCopy.posts=[...state.posts]
-//           stateCopy.posts.push(newPost)
-//           stateCopy.newPostText = ''
-//           return stateCopy
-//           // state.posts.push(newPost)
-//           // state.newPostText = ''
-//           // return state
-//         }
-//       case UPDATE_NEW_POST_TEXT:{
-//           let stateCopy={...state}
-//            stateCopy.newPostText = action.newText
-//            return stateCopy
-//           // state.newPostText = action.newText
-//           // return state
-//       }
-//       default:
-//           return state
-//   }
-
-
-// }
 
 const profileReducer = (state=initialState, action) => {
   switch (action.type) {
@@ -101,6 +52,10 @@ const profileReducer = (state=initialState, action) => {
           case DELETE_POST:{
             return {...state,posts:state.posts.filter(p=>
             p.id!=action.postId)}
+
+          }
+          case SAVE_PHOTO_SUCCESS:{
+            return {...state,profile:{...state.profile, photos:action.photos}}
 
           }
       default:
@@ -138,6 +93,11 @@ export const addPostActionCreator=(newPostText)=>{
     type:SET_STATUS,status
     }
   }
+   export const savePhotoSuccess=(photos)=>{
+    return{
+      type:SAVE_PHOTO_SUCCESS,photos
+    }
+  }
 
   export const getUserProfile=(userId)=>{
     return (dispatch)=>{
@@ -162,6 +122,66 @@ export const updateStatus=(status)=>(dispatch)=>{
     }
   })
 }
+export const savePhoto=(file)=>(dispatch)=>{
+  profileAPI.savePhoto(file)
+  .then(response=>{ 
+    if(response.data.resultCode===0){
+    dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+  })
+}
 
 
 export default profileReducer
+
+
+
+
+// const profileReducer=(state,action)=>{
+ 
+//     if(action.type===ADD_POST){
+//         let newPost={
+//           id:5,
+//           message:state.newPostText,
+//           likesCount:0
+//       }
+//       state.posts.push(newPost)
+//       state.newPostText=''
+
+//       }else if(action.type===UPDATE_NEW_POST_TEXT){
+//         state.newPostText=action.newText
+
+//       }
+//     return state
+// }
+
+// const profileReducer = (state=initialState, action) => {
+//   switch (action.type) {
+//       case ADD_POST:{
+//           let newPost = {
+//               id: 5,
+//               message: state.newPostText,
+//               likesCount: 0
+//           }
+//           let stateCopy={...state}
+//           stateCopy.posts=[...state.posts]
+//           stateCopy.posts.push(newPost)
+//           stateCopy.newPostText = ''
+//           return stateCopy
+//           // state.posts.push(newPost)
+//           // state.newPostText = ''
+//           // return state
+//         }
+//       case UPDATE_NEW_POST_TEXT:{
+//           let stateCopy={...state}
+//            stateCopy.newPostText = action.newText
+//            return stateCopy
+//           // state.newPostText = action.newText
+//           // return state
+//       }
+//       default:
+//           return state
+//   }
+
+
+// }

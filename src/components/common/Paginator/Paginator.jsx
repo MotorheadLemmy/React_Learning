@@ -6,7 +6,7 @@ let Paginator = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSiz
     let pagesCount=Math.ceil(totalItemsCount/pageSize)
         let pages=[]
         for (let i=1;i<=pagesCount;i++){
-            pages.push([i])
+            pages.push(i)
         }
         let portionCount = Math.ceil(pagesCount / portionSize);
         let [portionNumber, setPortionNumber] = useState(1);
@@ -21,7 +21,7 @@ let Paginator = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSiz
                 .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
                 .map((p) => {
                 return <span className={ cn({
-                    [styles.selectedPage]: currentPage === p
+                    [styles.selectedPage]: currentPage == p
                 }, styles.pageNumber) }
                              key={p}
                              onClick={(e) => {
@@ -38,3 +38,11 @@ let Paginator = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSiz
 
 }
 export default Paginator
+
+{/* <div>
+{pages.map(p => {
+    return <span className={props.currentPage == p ? styles.selectedPage : styles.notselectedPage}
+        onClick={(e) => {props.onPageChanged(p) }}>{p}</span>
+})}
+
+</div> */}
