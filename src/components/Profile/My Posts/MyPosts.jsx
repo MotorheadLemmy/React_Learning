@@ -1,13 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { addPostActionCreator} from '../../../redux/profile-reducer';
 import { maxLengthCreator, required } from '../../../utils/validators/validators';
 import { Textarea } from '../../common/FormsControls/FormsControls';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 const MyPosts = React.memo(props=> {
 
-let postsElements=props.posts.map(p=><Post message={p.message} likesCount={p.likesCount} />)
+let postsElements=props.posts.map(p=><Post key={p.id} message={p.message} likesCount={p.likesCount} />)
 let newPostElement=React.createRef()
 
 let onAddPost=(values)=>{

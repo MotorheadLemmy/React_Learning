@@ -2,7 +2,7 @@ import React from 'react';
 import MyPostsContainer from './My Posts/MyPostsContainer';
 import Profile from './Profile';
 import s from './Profile.module.css';
-import {getUserProfile,getStatus,updateStatus,savePhoto} from '../../redux/profile-reducer'
+import {getUserProfile,getStatus,updateStatus,savePhoto,saveProfile} from '../../redux/profile-reducer'
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -87,6 +87,6 @@ isAuth:state.auth.isAuth
  //export default connect(mapStateToProps,{getUserProfile})(WithUrlDataContainerComponent);
 
 export default compose(
-connect(mapStateToProps,{getUserProfile,getStatus,updateStatus,savePhoto}),
+connect(mapStateToProps,{getUserProfile,getStatus,updateStatus,savePhoto,saveProfile}),
 withRouter)
 (ProfileContainer)
