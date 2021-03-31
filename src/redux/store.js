@@ -9,11 +9,8 @@ let store={
           {id:1,message:'hi.how are you?',likesCount:12},
           {id:2,message:'its my first post hm',likesCount:14},
           {id:3,message:'ahahah',likesCount:14}
-          
         ],
         newPostText:'awesome'
-   
-
     },
     dialogsPage:{
       messages:[
